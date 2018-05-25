@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ù<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
@@ -85,13 +85,14 @@
               </div>
             </form>
             
-              <!-- i18n -->
+              <!-- i18n 
               <form>
 	            <select id="languageSelect" onchange="changeLang();" >
                 	<option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
                 	<option value="it" ${language == 'it' ? 'selected' : ''}>Italiano</option>
             	</select>
         	  </form>
+        	  -->
           </section>
         </div>
 
