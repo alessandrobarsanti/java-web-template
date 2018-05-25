@@ -70,6 +70,12 @@
 	</security-constraint>
 	<security-constraint>
 		<web-resource-collection>
+			<web-resource-name>Register servlet</web-resource-name>
+			<url-pattern>/ui/doRegisterServlet</url-pattern>
+		</web-resource-collection>
+	</security-constraint>
+	<security-constraint>
+		<web-resource-collection>
 			<web-resource-name>CSS resources</web-resource-name>
 			<url-pattern>/ui/css/*</url-pattern>
 		</web-resource-collection>
