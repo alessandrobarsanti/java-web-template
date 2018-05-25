@@ -109,7 +109,7 @@ public class GridColumn {
 
 	@Override
 	public String toString() {
-		return "Grid Column #" + description + " for Grid #" + getGrid().getDescription();
+		return "Grid Column #" + description + " for Grid #" + (grid == null ? "null" : getGrid().getDescription());
 	}
 
 	@Override
