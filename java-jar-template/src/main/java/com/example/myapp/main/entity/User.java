@@ -25,10 +25,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.security.auth.Subject;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import com.example.myapp.main.enums.BooleanYN;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * A login user. This class implements Principal, so it can be integrated with
@@ -62,12 +64,18 @@ public class User implements Principal, Serializable {
 	private String username;
 	private String email;
 	private String encryptedPassword;
+
+	@XmlElement(nillable = true)
 	private String personName;
+
+	@XmlElement(nillable = true)
 	private String personSurname;
+	
 	private Date birthdate;
 	private BooleanYN active = BooleanYN.Y;
 	private String passwordRecoveryCode;
 
+	@XmlElement(nillable = true)
 	private Set<Role> roles = new HashSet<Role>();
 
 	public User() {
@@ -98,7 +106,7 @@ public class User implements Principal, Serializable {
 	 * This is JAAS username.
 	 */
 	@Override
-	@Column(name = "USERNAME", unique = true, nullable = false)
+	@Column(name = "USERNAME", unique = true)
 	public String getName() {
 		return username;
 	}
@@ -137,6 +145,7 @@ public class User implements Principal, Serializable {
 	}
 
 	@Column(name = "NAME")
+	@XmlTransient
 	public String getPersonName() {
 		return personName;
 	}
@@ -195,14 +204,22 @@ public class User implements Principal, Serializable {
 		return subject.getPrincipals().contains(this);
 	}
 
-	@Override
-	public String toString() {
-		return "user #" + username;
-	}
+	// @Override
+	// public String toString() {
+	// return "user #" + username;
+	// }
 
 	@Override
 	public int hashCode() {
 		return username.hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", encryptedPassword="
+				+ encryptedPassword + ", personName=" + personName + ", personSurname=" + personSurname + ", birthdate="
+				+ birthdate + ", active=" + active + ", passwordRecoveryCode=" + passwordRecoveryCode + ", roles="
+				+ roles + "]";
 	}
 
 	@Override

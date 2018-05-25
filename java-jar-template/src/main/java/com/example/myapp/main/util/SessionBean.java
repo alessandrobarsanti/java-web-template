@@ -66,4 +66,9 @@ public class SessionBean implements Serializable {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
+
+	@Override
+	public String toString() {
+		return "SessionBean [user=" + user + ", roles=" + roles + ", menus=" + menus + ", language=" + language + "]";
+	}
 }

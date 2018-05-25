@@ -223,7 +223,7 @@ public class UsersManager {
 	 * @param unencryptedPassword
 	 */
 	public void setPassword(User u, String cleartextPassword) {
-		setPassword(u, encryptPassword(cleartextPassword));
+		u.setEncryptedPassword(encryptPassword(cleartextPassword));
 	}
 
 	/**
