@@ -1,4 +1,4 @@
-ù<!DOCTYPE html>
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
@@ -98,7 +98,7 @@
 
         <div id="register" class="animate form registration_form">
           <section class="login_content">
-            <form>
+            <form action="doRegisterServlet" method="post">
               <h1>Create Account</h1>
               <div>
                 <input type="text" class="form-control" placeholder="Username" required name="userId" />
@@ -106,11 +106,20 @@
               <div>
                 <input type="email" class="form-control" placeholder="Email" required name="email" />
               </div>
+              <div class="clearfix">
+              ${sessionScope.error_message_register}
+                    <c:if test="${sessionScope.error_message_register != null && sessionScope.error_message_register != '??????'}">
+						<fmt:message key="${sessionScope.error_message_register}" />
+						<c:set var="error_message_register" scope="session" value="" />
+					</c:if>
+			  </div>
               <div>
                 <input type="password" class="form-control" placeholder="Password" required name="pwd" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="doLogin">Submit</a>
+<!--                 <a class="btn btn-default submit" href="javascript:void(0);">Submit</a> -->
+<!--                 <input type="submit" value="Submit"> -->
+                <button type="submit" class="btn bg-blue btn-block">Submit</button>
               </div>
 
               <div class="clearfix"></div>
@@ -143,7 +152,7 @@
                   <i class="fa fa-envelope-o text-muted"></i>
                 </div>
                 <div>
-                	<c:if test="${sessionScope.error_message != null }">
+                	<c:if test="${sessionScope.error_message != null}">
 						<fmt:message key="${sessionScope.error_message}" />
 						<c:set var="error_message" scope="session" value="" />
 					</c:if>
